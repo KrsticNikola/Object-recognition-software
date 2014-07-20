@@ -23,7 +23,7 @@ public class ImageCompare {
         this.params = new CompareParams();
 
     }
-
+    //
     // constructor 1. use filenames
     public ImageCompare(String file1, String file2, CompareParams params) {
 
