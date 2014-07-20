@@ -41,7 +41,7 @@ public class JPanelWelcomePanel extends javax.swing.JPanel {
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("DejaVu Serif", 0, 24)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("Koriscenje:\n1. File -> Open video\nili \n1. File -> Open Camera\n\n2. File -> Load neural network");
+        jTextArea1.setText("Koriscenje:\n1. File -> Open video\nili \n1. File -> Open Camera\n\n2. File -> Load neural network\n\n3. Play -> Shape ili Obican video");
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
