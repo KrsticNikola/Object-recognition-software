@@ -10,12 +10,12 @@ package gui.panel;
  *
  * @author nick
  */
-public class jPanelWelkomePanel extends javax.swing.JPanel {
+public class JPanelWelcomePanel extends javax.swing.JPanel {
 
     /**
      * Creates new form jPanelWelkomePanel
      */
-    public jPanelWelkomePanel() {
+    public JPanelWelcomePanel() {
         initComponents();
     }
 
@@ -35,13 +35,13 @@ public class jPanelWelkomePanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(640, 480));
 
         jLabel1.setFont(new java.awt.Font("DejaVu Sans", 2, 24)); // NOI18N
-        jLabel1.setText("Dobrodosli!");
+        jLabel1.setText("Object recognition v0.1");
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("DejaVu Serif", 0, 24)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("Koriscenje:\n1. File -> Open video\nili \n1. File -> Open Camera");
+        jTextArea1.setText("Koriscenje:\n1. File -> Open video\nili \n1. File -> Open Camera\n\n2. File -> Load neural network");
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -49,14 +49,11 @@ public class jPanelWelkomePanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addGap(68, 68, 68)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

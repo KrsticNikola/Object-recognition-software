@@ -130,9 +130,7 @@ public class Controller {
 
                     //snimace pronadjen objekte
                     if (saveObjects) {
-//                        imageUtil.saveJPG(bImageForSave, outputObjectFolder + brojac + ".jpg");
-                        imageUtil.saveJPG(bImage, outputObjectFolder + brojac + ".jpg");
-//                    imageUtil.saveJPG(bImageForSave, "pictures/pronasao/" + brojac + ".jpg");
+                        imageUtil.saveJPG(bImage, outputObjectFolder + "/" + brojac + ".jpg");
                     }
                     System.out.println("Pronasao");
                     graphicsShapeRect.drawRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
@@ -140,16 +138,16 @@ public class Controller {
                     graphicsNormalRect.drawRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
                     graphicsNormalRect.dispose();
                 }
-            brojac++;
+                brojac++;
+            }
+
         }
 
-}
-
-}
+    }
 
 //vraca original sliku sa pronadjenim promenama
 //vraca samo konturu promena
-public void setParamsCompare(CompareParams params) {
+    public void setParamsCompare(CompareParams params) {
         this.params = params;
     }
 
@@ -178,19 +176,17 @@ public void setParamsCompare(CompareParams params) {
     }
 
     public void setOutputObjectFolder(File outputFolder) {
+
         outputObjectFolder = outputFolder.getAbsolutePath();
+        System.out.println(outputObjectFolder);
     }
 
     public void loadNeuralNetwork(File networkLocation) {
         nnetwork = NeuralNetwork.load(networkLocation.getAbsolutePath());
         nnVariable = networkLocation.getName().split("_")[1].split("\\.")[0];
-        imageRecognition 
-
-
-
-= (ImageRecognitionPlugin) nnetwork.getPlugin(ImageRecognitionPlugin.class  
-
-); // get the image recognition plugin from neural network
+        imageRecognition
+                = (ImageRecognitionPlugin) nnetwork.getPlugin(ImageRecognitionPlugin.class
+                ); // get the image recognition plugin from neural network
 
     }
 

@@ -21,18 +21,13 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="181" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="228" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                  </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jScrollPane1" max="32767" attributes="0"/>
+                  <Component id="jLabel1" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="94" max="32767" attributes="0"/>
+              <EmptySpace pref="79" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,7 +49,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="DejaVu Sans" size="24" style="2"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Dobrodosli!"/>
+        <Property name="text" type="java.lang.String" value="Object recognition v0.1"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -72,7 +67,7 @@
               <Font name="DejaVu Serif" size="24" style="0"/>
             </Property>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Koriscenje:&#xa;1. File -&gt; Open video&#xa;ili &#xa;1. File -&gt; Open Camera"/>
+            <Property name="text" type="java.lang.String" value="Koriscenje:&#xa;1. File -&gt; Open video&#xa;ili &#xa;1. File -&gt; Open Camera&#xa;&#xa;2. File -&gt; Load neural network"/>
           </Properties>
         </Component>
       </SubComponents>

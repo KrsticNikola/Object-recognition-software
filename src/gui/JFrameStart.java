@@ -6,10 +6,10 @@
 package gui;
 
 import controller.Controller;
-import gui.jDialog.jDialogEditNeuralNetworkSensitivity;
-import gui.jDialog.jDialogEditSensitivity;
-import gui.panel.jPanelVideoPlayer;
-import gui.panel.jPanelWelkomePanel;
+import gui.jDialog.JDialogEditNeuralNetworkSensitivity;
+import gui.jDialog.JDialogEditSensitivity;
+import gui.panel.JPanelVideoPlayer;
+import gui.panel.JPanelWelcomePanel;
 import gui.panel.paintWorker.IWorkerInterface;
 import gui.panel.paintWorker.WorkerNormalVideo;
 import gui.panel.paintWorker.WorkerShapesVideo;
@@ -34,7 +34,7 @@ public class JFrameStart extends javax.swing.JFrame {
 
         initComponents();
         setLabelValues();
-        jPanelWelkomePanel welkome = new jPanelWelkomePanel();
+        JPanelWelcomePanel welkome = new JPanelWelcomePanel();
         setActivePanel(welkome);
 
     }
@@ -302,8 +302,11 @@ public class JFrameStart extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
 
         //Create a file chooser
-        final JFileChooser fc = new JFileChooser();
+        JFileChooser fc = new JFileChooser();
         //In response to a button click:
+
+        fc.setCurrentDirectory(new java.io.File("."));
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
         int returnVal = fc.showOpenDialog(this);
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -324,14 +327,14 @@ public class JFrameStart extends javax.swing.JFrame {
 
     private void jMItemPlayNormalVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMItemPlayNormalVideoActionPerformed
         paintWorker = new WorkerNormalVideo();
-        jPanelVideoPlayer jp = new jPanelVideoPlayer(paintWorker);
+        JPanelVideoPlayer jp = new JPanelVideoPlayer(paintWorker);
         setActivePanel(jp);
         Controller.getInstance().playMedia();
     }//GEN-LAST:event_jMItemPlayNormalVideoActionPerformed
 
     private void jMItemPlayShapeVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMItemPlayShapeVideoActionPerformed
         paintWorker = new WorkerShapesVideo();
-        jPanelVideoPlayer jp = new jPanelVideoPlayer(paintWorker);
+        JPanelVideoPlayer jp = new JPanelVideoPlayer(paintWorker);
         setActivePanel(jp);
         Controller.getInstance().playMedia();
     }//GEN-LAST:event_jMItemPlayShapeVideoActionPerformed
@@ -340,12 +343,12 @@ public class JFrameStart extends javax.swing.JFrame {
         paintWorker.stopExecuting();    //gasi paintWorker
 //        paintWorker = null;
         Controller.getInstance().stopMedia();   //gasi media encoder
-        jPanelWelkomePanel welkome = new jPanelWelkomePanel();
+        JPanelWelcomePanel welkome = new JPanelWelcomePanel();
         setActivePanel(welkome);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        jDialogEditSensitivity jdialog = new jDialogEditSensitivity(this, true);
+        JDialogEditSensitivity jdialog = new JDialogEditSensitivity(this, true);
         jdialog.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
@@ -360,10 +363,12 @@ public class JFrameStart extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
 
         //Create a file chooser
-        final JFileChooser fc = new JFileChooser();
+        JFileChooser fc = new JFileChooser();
         //In response to a button click:
-        int returnVal = fc.showOpenDialog(this);
 
+        fc.setCurrentDirectory(new java.io.File("."));
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        int returnVal = fc.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = fc.getSelectedFile();
 //            System.out.println(file.getAbsolutePath());
@@ -377,7 +382,7 @@ public class JFrameStart extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        jDialogEditNeuralNetworkSensitivity jdialog = new jDialogEditNeuralNetworkSensitivity(this, true);
+        JDialogEditNeuralNetworkSensitivity jdialog = new JDialogEditNeuralNetworkSensitivity(this, true);
         jdialog.setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
@@ -388,10 +393,13 @@ public class JFrameStart extends javax.swing.JFrame {
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
 
         //Create a file chooser
-        final JFileChooser fc = new JFileChooser();
+        JFileChooser fc = new JFileChooser();
         //In response to a button click:
-        int returnVal = fc.showOpenDialog(this);
+        fc.setCurrentDirectory(new java.io.File("."));
+        fc.setAcceptAllFileFilterUsed(false);
 
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int returnVal = fc.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = fc.getSelectedFile();
 

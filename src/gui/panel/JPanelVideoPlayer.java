@@ -17,14 +17,14 @@ import javax.swing.SwingUtilities;
  *
  * @author nick
  */
-public class jPanelVideoPlayer extends javax.swing.JPanel {
+public class JPanelVideoPlayer extends javax.swing.JPanel {
 
     /**
      * Creates new form jPanelVideoShapes
      */
     private Image src;
 
-    public jPanelVideoPlayer(IWorkerInterface worker) {
+    public JPanelVideoPlayer(IWorkerInterface worker) {
         initComponents();
         initWorker(worker);
 
@@ -72,7 +72,7 @@ public class jPanelVideoPlayer extends javax.swing.JPanel {
                 controller.Controller.getInstance().playMedia();
                 WorkerShapesVideo w = new WorkerShapesVideo();
 //                WorkerNormalVideo w = new WorkerNormalVideo();
-                jPanelVideoPlayer jp = new jPanelVideoPlayer(w);
+                JPanelVideoPlayer jp = new JPanelVideoPlayer(w);
                 jf.getContentPane().add(jp, BorderLayout.CENTER);
                 jf.setSize(1024, 768);
                 jf.setVisible(true);

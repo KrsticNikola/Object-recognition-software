@@ -6,7 +6,7 @@
 package gui.panel.paintWorker;
 
 import controller.Controller;
-import gui.panel.jPanelVideoPlayer;
+import gui.panel.JPanelVideoPlayer;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -21,7 +21,7 @@ import sharedThreadResources.DataShare;
  */
 public class WorkerShapesVideo extends SwingWorker<Void, Image> implements IWorkerInterface {
 
-    private jPanelVideoPlayer jpanl;
+    private JPanelVideoPlayer jpanl;
     private volatile boolean stop = false; //stop flag
 
     public WorkerShapesVideo() {
@@ -96,7 +96,7 @@ public class WorkerShapesVideo extends SwingWorker<Void, Image> implements IWork
     }
 
     @Override
-    public void setTopPanel(jPanelVideoPlayer aThis) {
+    public void setTopPanel(JPanelVideoPlayer aThis) {
         this.jpanl = aThis;
     }
 

@@ -5,7 +5,7 @@
  */
 package gui.panel.paintWorker;
 
-import gui.panel.jPanelVideoPlayer;
+import gui.panel.JPanelVideoPlayer;
 
 /**
  *
@@ -13,7 +13,7 @@ import gui.panel.jPanelVideoPlayer;
  */
 public interface IWorkerInterface {
 
-    void setTopPanel(jPanelVideoPlayer aThis);
+    void setTopPanel(JPanelVideoPlayer aThis);
     void execute();
     void stopExecuting();
 }
