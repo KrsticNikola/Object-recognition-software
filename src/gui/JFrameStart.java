@@ -36,6 +36,8 @@ public class JFrameStart extends javax.swing.JFrame {
         setLabelValues();
         JPanelWelcomePanel welkome = new JPanelWelcomePanel();
         setActivePanel(welkome);
+        Controller.getInstance().setFpsLabel(jLblFPS);
+        Controller.getInstance().setFrameNumberLabel(jLblFrameNumber);
 
     }
 
@@ -55,6 +57,8 @@ public class JFrameStart extends javax.swing.JFrame {
         jLblLoadedNeuralNetwork = new javax.swing.JLabel();
         jLblLoadedVideoFile = new javax.swing.JLabel();
         jLblFPS = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLblFrameNumber = new javax.swing.JLabel();
         jPanelForPlayingMedia = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -68,7 +72,6 @@ public class JFrameStart extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMItemPlayShapeVideo = new javax.swing.JMenuItem();
         jMItemPlayNormalVideo = new javax.swing.JMenuItem();
@@ -77,6 +80,8 @@ public class JFrameStart extends javax.swing.JFrame {
         jMenu6 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Aplikacija");
@@ -93,7 +98,11 @@ public class JFrameStart extends javax.swing.JFrame {
 
         jLblLoadedVideoFile.setText("Not enabled");
 
-        jLblFPS.setText("Not enabled");
+        jLblFPS.setText("Video not playing");
+
+        jLabel4.setText("Frame number:");
+
+        jLblFrameNumber.setText("Video not playing");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -112,9 +121,14 @@ public class JFrameStart extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLblLoadedVideoFile, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
-                            .addComponent(jLblFPS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLblLoadedVideoFile, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLblFPS)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLblFrameNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,7 +144,9 @@ public class JFrameStart extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLblFPS))
+                    .addComponent(jLblFPS)
+                    .addComponent(jLabel4)
+                    .addComponent(jLblFrameNumber))
                 .addGap(17, 17, 17))
         );
 
@@ -221,15 +237,6 @@ public class JFrameStart extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("View");
-
-        jCheckBoxMenuItem1.setText("Show fps");
-        jCheckBoxMenuItem1.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jCheckBoxMenuItem1StateChanged(evt);
-            }
-        });
-        jMenu3.add(jCheckBoxMenuItem1);
-
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Play");
@@ -273,6 +280,18 @@ public class JFrameStart extends javax.swing.JFrame {
         jMenu6.add(jMenuItem7);
 
         jMenuBar1.add(jMenu6);
+
+        jMenu7.setText("Developer tool");
+
+        jCheckBoxMenuItem1.setText("Enable shape saving");
+        jCheckBoxMenuItem1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBoxMenuItem1StateChanged(evt);
+            }
+        });
+        jMenu7.add(jCheckBoxMenuItem1);
+
+        jMenuBar1.add(jMenu7);
 
         setJMenuBar(jMenuBar1);
 
@@ -352,10 +371,6 @@ public class JFrameStart extends javax.swing.JFrame {
         jdialog.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void jCheckBoxMenuItem1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1StateChanged
-//        Controller.getInstance().getLblFps();
-    }//GEN-LAST:event_jCheckBoxMenuItem1StateChanged
-
     private void jCheckBoxMenuItem2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem2StateChanged
         Controller.getInstance().changeHighLvlShapeState();
     }//GEN-LAST:event_jCheckBoxMenuItem2StateChanged
@@ -407,6 +422,10 @@ public class JFrameStart extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
+    private void jCheckBoxMenuItem1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1StateChanged
+        Controller.getInstance().changeSavingPictureToShape();
+    }//GEN-LAST:event_jCheckBoxMenuItem1StateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -447,7 +466,6 @@ public class JFrameStart extends javax.swing.JFrame {
         pack();
         if (activePanel != null) {
             jPanelForPlayingMedia.remove(activePanel);
-            System.out.println("remove");
         }
         jPanelForPlayingMedia.add(panel, BorderLayout.CENTER);
         this.pack();
@@ -465,7 +483,9 @@ public class JFrameStart extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLblFPS;
+    private javax.swing.JLabel jLblFrameNumber;
     private javax.swing.JLabel jLblLoadedNeuralNetwork;
     private javax.swing.JLabel jLblLoadedVideoFile;
     private javax.swing.JMenuItem jMItemPlayNormalVideo;
@@ -476,6 +496,7 @@ public class JFrameStart extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;

@@ -18,6 +18,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.io.File;
 import java.util.HashMap;
+import javax.swing.JLabel;
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.imgrec.ImageRecognitionPlugin;
 import sharedThreadResources.DataShare;
@@ -58,8 +59,13 @@ public class Controller {
     private String outputObjectFolder;
     private boolean saveObjects;
 
+    private JLabel fpsLabel; //fps labela
+    private JLabel frameNumberLabel; // labela rednog broja frejma
+    private boolean saveShapes = false;
+
     private Controller() {
 
+//        fpsLabel = new JLabel("Startujte video");
         // get the image recognition plugin from neural network
         dataStore = new DataShare();
         neuralNetworksensitivity = 0.7;
@@ -130,6 +136,9 @@ public class Controller {
 
                     //snimace pronadjen objekte
                     if (saveObjects) {
+                        if (!saveShapes) {
+                            bImage = img2.getSubimage(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+                        }
                         imageUtil.saveJPG(bImage, outputObjectFolder + "/" + brojac + ".jpg");
                     }
                     System.out.println("Pronasao");
@@ -166,11 +175,11 @@ public class Controller {
     public void setMedia(String mediaEncoding) {
         if (mediaEncoding.equalsIgnoreCase("video")) {
             videoDecoder = new VideoProcessingThread(dataStore, fileMediaPath);
-            System.out.println("video radi");
+            System.out.println("video startovan");
         }
         if (mediaEncoding.equalsIgnoreCase("cam")) {
             videoDecoder = new CameraProcessingThread(dataStore, "linux");
-            System.out.println("kamera");
+            System.out.println("kamera startovana");
         }
 
     }
@@ -183,7 +192,7 @@ public class Controller {
 
     public void loadNeuralNetwork(File networkLocation) {
         nnetwork = NeuralNetwork.load(networkLocation.getAbsolutePath());
-        nnVariable = networkLocation.getName().split("_")[1].split("\\.")[0];
+        nnVariable = networkLocation.getName().split("_")[1].split("\\.")[0];//uzima ime varijable iz imena mreze
         imageRecognition
                 = (ImageRecognitionPlugin) nnetwork.getPlugin(ImageRecognitionPlugin.class
                 ); // get the image recognition plugin from neural network
@@ -197,7 +206,6 @@ public class Controller {
 
     public void stopMedia() {
         videoDecoder.requestStop();
-//        dataStore = new DataShare();
     }
 
     public DataShare getDataStore() {
@@ -222,6 +230,26 @@ public class Controller {
 
     public void changeSaveObjectState() {
         saveObjects = !saveObjects;
+    }
+
+    public JLabel getFpsLabel() {
+        return fpsLabel;
+    }
+
+    public void setFpsLabel(JLabel fpsLabel) {
+        this.fpsLabel = fpsLabel;
+    }
+
+    public JLabel getFrameNumberLabel() {
+        return frameNumberLabel;
+    }
+
+    public void setFrameNumberLabel(JLabel frameNumberLabel) {
+        this.frameNumberLabel = frameNumberLabel;
+    }
+
+    public void changeSavingPictureToShape() {
+        saveShapes = !saveShapes;
     }
 
 }

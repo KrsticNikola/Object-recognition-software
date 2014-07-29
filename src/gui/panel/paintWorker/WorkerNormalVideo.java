@@ -12,6 +12,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
+import javax.swing.JLabel;
 import javax.swing.SwingWorker;
 import sharedThreadResources.DataShare;
 
@@ -24,7 +25,12 @@ public class WorkerNormalVideo extends SwingWorker<Void, Image> implements IWork
     private JPanelVideoPlayer jpanl;
     private volatile boolean stop = false; //stop flag
 
+    private JLabel fpsLabel;//fps labela
+    private JLabel frameNumberLabel;//redni broj frejma
+
     public WorkerNormalVideo() {
+        fpsLabel = Controller.getInstance().getFpsLabel();
+        frameNumberLabel = Controller.getInstance().getFrameNumberLabel();
     }
 
     @Override
@@ -80,8 +86,11 @@ public class WorkerNormalVideo extends SwingWorker<Void, Image> implements IWork
                 last = System.currentTimeMillis();
                 frames++;
                 if (frames % 30 == 0) {
-                    String fps = String.valueOf((double) frames / (last - start) * 1000);
-                    System.out.println("Frames = " + frames + ", fps = " + fps);
+                    double fps = ((double) frames / (last - start) * 1000);
+                    fpsLabel.setText(String.valueOf(fps));
+                    frameNumberLabel.setText(String.valueOf(frames));
+//                    String fps = String.valueOf((double) frames / (last - start) * 1000);
+//                    System.out.println("Frames = " + frames + ", fps = " + fps);
                 }
             }
         }
@@ -98,5 +107,7 @@ public class WorkerNormalVideo extends SwingWorker<Void, Image> implements IWork
     @Override
     public void stopExecuting() {
         stop = true;
+        fpsLabel.setText("Video not playing");
+        frameNumberLabel.setText("Video not playing");
     }
 }

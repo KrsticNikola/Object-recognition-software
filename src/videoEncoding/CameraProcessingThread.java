@@ -221,7 +221,9 @@ public class CameraProcessingThread implements IDecoder {
     //stop metoda
     @Override
     public void requestStop() {
+        container.close();
         container = null;
+
     }
 
     private void putdataStore(BufferedImage image) {

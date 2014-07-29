@@ -75,8 +75,9 @@ public class VideoProcessingThread implements IDecoder {
     //stop metoda
     @Override
     public void requestStop() {
-//        stop = true;
+        mediaReader.close();
         mediaReader = null;
+
     }
 
     private class ImageSnapListener extends MediaListenerAdapter {

@@ -12,6 +12,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
+import javax.swing.JLabel;
 import javax.swing.SwingWorker;
 import sharedThreadResources.DataShare;
 
@@ -24,7 +25,12 @@ public class WorkerShapesVideo extends SwingWorker<Void, Image> implements IWork
     private JPanelVideoPlayer jpanl;
     private volatile boolean stop = false; //stop flag
 
+    private JLabel fpsLabel;//fps labela
+    private JLabel frameNumberLabel;//redni broj frejma
+
     public WorkerShapesVideo() {
+        fpsLabel = Controller.getInstance().getFpsLabel();
+        frameNumberLabel = Controller.getInstance().getFrameNumberLabel();
     }
 
     @Override
@@ -86,7 +92,10 @@ public class WorkerShapesVideo extends SwingWorker<Void, Image> implements IWork
                 last = System.currentTimeMillis();
                 frames++;
                 if (frames % 30 == 0) {
-                    System.out.println("Frames = " + frames + ", fps = " + ((double) frames / (last - start) * 1000));
+                    double fps = ((double) frames / (last - start) * 1000);
+                    fpsLabel.setText(String.valueOf(fps));
+                    frameNumberLabel.setText(String.valueOf(frames));
+//                    System.out.println("Frames = " + frames + ", fps = " + ((double) frames / (last - start) * 1000));
 
                 }
             }
@@ -103,6 +112,8 @@ public class WorkerShapesVideo extends SwingWorker<Void, Image> implements IWork
     //stop metoda
     @Override
     public void stopExecuting() {
+        fpsLabel.setText("Video not playing");
+        frameNumberLabel.setText("Video not playing");
         stop = true;
     }
 }

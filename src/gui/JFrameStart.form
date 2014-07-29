@@ -86,16 +86,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="View"/>
           </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxMenuItem1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Show fps"/>
-              </Properties>
-              <Events>
-                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jCheckBoxMenuItem1StateChanged"/>
-              </Events>
-            </MenuItem>
-          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu4">
           <Properties>
@@ -149,6 +139,21 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="About"/>
               </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu7">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Developer tool"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JCheckBoxMenuItem" name="jCheckBoxMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Enable shape saving"/>
+              </Properties>
+              <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jCheckBoxMenuItem1StateChanged"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -228,12 +233,18 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLblLoadedVideoFile" pref="487" max="32767" attributes="0"/>
-                              <Component id="jLblFPS" max="32767" attributes="0"/>
+                              <Component id="jLblLoadedVideoFile" min="-2" pref="487" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLblFPS" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jLblFrameNumber" min="-2" pref="131" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="37" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -254,6 +265,8 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLblFPS" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLblFrameNumber" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               </Group>
@@ -288,7 +301,17 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLblFPS">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Not enabled"/>
+            <Property name="text" type="java.lang.String" value="Video not playing"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Frame number:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLblFrameNumber">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Video not playing"/>
           </Properties>
         </Component>
       </SubComponents>
