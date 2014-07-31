@@ -20,6 +20,10 @@ public class JDialogEditNeuralNetworkSensitivity extends javax.swing.JDialog {
     public JDialogEditNeuralNetworkSensitivity(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        double value = Controller.getInstance().getNeuralNetworksensitivity();
+
+        jLblSensValue.setText(String.valueOf(value));
+        jSliderValue.setValue((int) (value*100));
     }
 
     /**
@@ -32,7 +36,7 @@ public class JDialogEditNeuralNetworkSensitivity extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jSlider1 = new javax.swing.JSlider();
+        jSliderValue = new javax.swing.JSlider();
         jLblSensValue = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -40,11 +44,11 @@ public class JDialogEditNeuralNetworkSensitivity extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         jLabel1.setText("Neural network sensitivity");
 
-        jSlider1.setMinimum(50);
-        jSlider1.setValue(70);
-        jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
+        jSliderValue.setMinimum(50);
+        jSliderValue.setValue(70);
+        jSliderValue.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider1StateChanged(evt);
+                jSliderValueStateChanged(evt);
             }
         });
 
@@ -61,7 +65,7 @@ public class JDialogEditNeuralNetworkSensitivity extends javax.swing.JDialog {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(70, 70, 70)
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSliderValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLblSensValue, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(90, Short.MAX_VALUE))
@@ -73,7 +77,7 @@ public class JDialogEditNeuralNetworkSensitivity extends javax.swing.JDialog {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSliderValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLblSensValue))
                 .addContainerGap(139, Short.MAX_VALUE))
         );
@@ -81,11 +85,11 @@ public class JDialogEditNeuralNetworkSensitivity extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
-        double value = jSlider1.getValue() / 100.0;
+    private void jSliderValueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderValueStateChanged
+        double value = jSliderValue.getValue() / 100.0;
         jLblSensValue.setText(String.valueOf(value));
         Controller.getInstance().setNeuralNetworksensitivity(value);
-    }//GEN-LAST:event_jSlider1StateChanged
+    }//GEN-LAST:event_jSliderValueStateChanged
 
     /**
      * @param args the command line arguments
@@ -132,6 +136,6 @@ public class JDialogEditNeuralNetworkSensitivity extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLblSensValue;
-    private javax.swing.JSlider jSlider1;
+    private javax.swing.JSlider jSliderValue;
     // End of variables declaration//GEN-END:variables
 }

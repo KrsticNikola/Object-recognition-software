@@ -53,7 +53,6 @@ public class Controller {
 
     private String fileMediaPath = ""; //putanja ka video fajlu
 
-    private boolean highLvlShape = false;
     private String nnVariable; // varijabla za pozivanje output.get(variable)
 
     private String outputObjectFolder;
@@ -62,6 +61,10 @@ public class Controller {
     private JLabel fpsLabel; //fps labela
     private JLabel frameNumberLabel; // labela rednog broja frejma
     private boolean saveShapes = false;
+    private boolean highLvlShape = false;
+    private boolean useNeuralNetwork = true;
+    private int recognitionAreaWidth = 110;
+    private int recognitionAreaHeigh = 110;
 
     private Controller() {
 
@@ -126,15 +129,31 @@ public class Controller {
 
         Rectangle[] resoult = segment.getSegments();
         for (Rectangle rectangle : resoult) {
-            if (rectangle.height > 110 && rectangle.width > 110) {
+            if (rectangle.height > recognitionAreaHeigh && rectangle.width > recognitionAreaWidth) {
                 BufferedImage bImage = imgShape.getSubimage(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
-                HashMap<String, Double> output = imageRecognition.recognizeImage(bImage);
+                if (useNeuralNetwork) {
+                    HashMap<String, Double> output = imageRecognition.recognizeImage(bImage);
 //                String variable = nnetwork.getLabel();
-                if (output.get(nnVariable) > neuralNetworksensitivity) {
-                    System.out.println(output.get(nnVariable));
+
+                    if (output.get(nnVariable) > neuralNetworksensitivity) {
+                        System.out.println(output.get(nnVariable));
 //                    BufferedImage bImageForSave = imgNormalRectangle.getSubimage(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
 
-                    //snimace pronadjen objekte
+                        //snimace pronadjen objekte
+                        if (saveObjects) {
+                            if (!saveShapes) {
+                                bImage = img2.getSubimage(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+                            }
+                            imageUtil.saveJPG(bImage, outputObjectFolder + "/" + brojac + ".jpg");
+                        }
+                        System.out.println("Pronasao");
+                        graphicsShapeRect.drawRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+                        graphicsShapeRect.dispose();
+                        graphicsNormalRect.drawRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+                        graphicsNormalRect.dispose();
+                    }
+                    brojac++;
+                } else {
                     if (saveObjects) {
                         if (!saveShapes) {
                             bImage = img2.getSubimage(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
@@ -146,8 +165,9 @@ public class Controller {
                     graphicsShapeRect.dispose();
                     graphicsNormalRect.drawRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
                     graphicsNormalRect.dispose();
+//                    }
+                    brojac++;
                 }
-                brojac++;
             }
 
         }
@@ -224,6 +244,10 @@ public class Controller {
         highLvlShape = !highLvlShape;
     }
 
+    public void changeNeuralNetworkRecognizingState() {
+        useNeuralNetwork = !useNeuralNetwork;
+    }
+
     public void setNeuralNetworksensitivity(double neuralNetworksensitivity) {
         this.neuralNetworksensitivity = neuralNetworksensitivity;
     }
@@ -250,6 +274,26 @@ public class Controller {
 
     public void changeSavingPictureToShape() {
         saveShapes = !saveShapes;
+    }
+
+    public int getRecognitionAreaWidth() {
+        return recognitionAreaWidth;
+    }
+
+    public void setRecognitionAreaWidth(int recognitionAreaWidth) {
+        this.recognitionAreaWidth = recognitionAreaWidth;
+    }
+
+    public int getRecognitionAreaHeigh() {
+        return recognitionAreaHeigh;
+    }
+
+    public void setRecognitionAreaHeigh(int recognitionAreaHeigh) {
+        this.recognitionAreaHeigh = recognitionAreaHeigh;
+    }
+
+    public double getNeuralNetworksensitivity() {
+        return neuralNetworksensitivity;
     }
 
 }

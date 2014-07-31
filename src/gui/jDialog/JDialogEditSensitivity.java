@@ -18,11 +18,13 @@ public class JDialogEditSensitivity extends javax.swing.JDialog {
      * Creates new form jDialogEditSensitivity
      */
     CompareParams params;
-
+    
     public JDialogEditSensitivity(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         params = Controller.getInstance().getParams();
+        jLblSensValue.setText(String.valueOf(params.getSensitivity()));
+        jSliderValue.setValue(params.getSensitivity());
     }
 
     /**
@@ -35,7 +37,7 @@ public class JDialogEditSensitivity extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jSlider1 = new javax.swing.JSlider();
+        jSliderValue = new javax.swing.JSlider();
         jLblSensValue = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -43,12 +45,12 @@ public class JDialogEditSensitivity extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         jLabel1.setText("Sensitivity");
 
-        jSlider1.setMaximum(20000);
-        jSlider1.setMinimum(150);
-        jSlider1.setValue(4500);
-        jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
+        jSliderValue.setMaximum(20000);
+        jSliderValue.setMinimum(150);
+        jSliderValue.setValue(4500);
+        jSliderValue.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider1StateChanged(evt);
+                jSliderValueStateChanged(evt);
             }
         });
 
@@ -64,7 +66,7 @@ public class JDialogEditSensitivity extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLblSensValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jSliderValue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -72,7 +74,7 @@ public class JDialogEditSensitivity extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSliderValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addComponent(jLblSensValue)
@@ -82,11 +84,11 @@ public class JDialogEditSensitivity extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
-        int value = jSlider1.getValue();
+    private void jSliderValueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderValueStateChanged
+        int value = jSliderValue.getValue();
         jLblSensValue.setText(String.valueOf(value));
         params.setSensitivity(value);
-    }//GEN-LAST:event_jSlider1StateChanged
+    }//GEN-LAST:event_jSliderValueStateChanged
 
     /**
      * @param args the command line arguments
@@ -133,6 +135,6 @@ public class JDialogEditSensitivity extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLblSensValue;
-    private javax.swing.JSlider jSlider1;
+    private javax.swing.JSlider jSliderValue;
     // End of variables declaration//GEN-END:variables
 }

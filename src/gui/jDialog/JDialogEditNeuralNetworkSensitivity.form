@@ -31,7 +31,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                      <Component id="jSlider1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jSliderValue" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLblSensValue" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
@@ -47,7 +47,7 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jSlider1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jSliderValue" min="-2" max="-2" attributes="0"/>
                   <Component id="jLblSensValue" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="139" max="32767" attributes="0"/>
@@ -64,13 +64,13 @@
         <Property name="text" type="java.lang.String" value="Neural network sensitivity"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSlider" name="jSlider1">
+    <Component class="javax.swing.JSlider" name="jSliderValue">
       <Properties>
         <Property name="minimum" type="int" value="50"/>
         <Property name="value" type="int" value="70"/>
       </Properties>
       <Events>
-        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSlider1StateChanged"/>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderValueStateChanged"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLblSensValue">

@@ -8,6 +8,7 @@ package gui;
 import controller.Controller;
 import gui.jDialog.JDialogEditNeuralNetworkSensitivity;
 import gui.jDialog.JDialogEditSensitivity;
+import gui.jDialog.JDialogRecognitionAreaWidthAndHeight;
 import gui.panel.JPanelVideoPlayer;
 import gui.panel.JPanelWelcomePanel;
 import gui.panel.paintWorker.IWorkerInterface;
@@ -77,11 +78,13 @@ public class JFrameStart extends javax.swing.JFrame {
         jMItemPlayNormalVideo = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu7 = new javax.swing.JMenu();
-        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Aplikacija");
@@ -271,16 +274,6 @@ public class JFrameStart extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
-        jMenu6.setText("Help");
-
-        jMenuItem6.setText("Tutorial");
-        jMenu6.add(jMenuItem6);
-
-        jMenuItem7.setText("About");
-        jMenu6.add(jMenuItem7);
-
-        jMenuBar1.add(jMenu6);
-
         jMenu7.setText("Developer tool");
 
         jCheckBoxMenuItem1.setText("Enable shape saving");
@@ -291,7 +284,33 @@ public class JFrameStart extends javax.swing.JFrame {
         });
         jMenu7.add(jCheckBoxMenuItem1);
 
+        jCheckBoxMenuItem4.setText("Disable neural network recognition");
+        jCheckBoxMenuItem4.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBoxMenuItem4StateChanged(evt);
+            }
+        });
+        jMenu7.add(jCheckBoxMenuItem4);
+
+        jMenuItem10.setText("Recognition area size");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu7.add(jMenuItem10);
+
         jMenuBar1.add(jMenu7);
+
+        jMenu6.setText("Help");
+
+        jMenuItem6.setText("Tutorial");
+        jMenu6.add(jMenuItem6);
+
+        jMenuItem7.setText("About");
+        jMenu6.add(jMenuItem7);
+
+        jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
 
@@ -312,7 +331,7 @@ public class JFrameStart extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(jPanelForPlayingMedia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -426,6 +445,15 @@ public class JFrameStart extends javax.swing.JFrame {
         Controller.getInstance().changeSavingPictureToShape();
     }//GEN-LAST:event_jCheckBoxMenuItem1StateChanged
 
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        JDialogRecognitionAreaWidthAndHeight jdialog = new JDialogRecognitionAreaWidthAndHeight(this, true);
+        jdialog.setVisible(true);
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jCheckBoxMenuItem4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem4StateChanged
+        Controller.getInstance().changeNeuralNetworkRecognizingState();
+    }//GEN-LAST:event_jCheckBoxMenuItem4StateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -480,6 +508,7 @@ public class JFrameStart extends javax.swing.JFrame {
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem3;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -499,6 +528,7 @@ public class JFrameStart extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

@@ -29,7 +29,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jLblSensValue" max="32767" attributes="0"/>
-                  <Component id="jSlider1" max="32767" attributes="0"/>
+                  <Component id="jSliderValue" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="44" max="32767" attributes="0"/>
           </Group>
@@ -40,7 +40,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jSlider1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jSliderValue" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -59,14 +59,14 @@
         <Property name="text" type="java.lang.String" value="Sensitivity"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSlider" name="jSlider1">
+    <Component class="javax.swing.JSlider" name="jSliderValue">
       <Properties>
         <Property name="maximum" type="int" value="20000"/>
         <Property name="minimum" type="int" value="150"/>
         <Property name="value" type="int" value="4500"/>
       </Properties>
       <Events>
-        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSlider1StateChanged"/>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderValueStateChanged"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLblSensValue">
