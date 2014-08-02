@@ -26,11 +26,6 @@ public class VideoProcessingThread implements IDecoder {
 
     }
 
-//    public VideoProcessingThread(DataShare testDataShare, int a) {
-////        this.dataStore = dataStore;
-//        dataStore = null;
-//        this.testDataShare = new DataShareProcessing(testDataShare);
-//    }
     @Override
     public void run() {
         runIt();

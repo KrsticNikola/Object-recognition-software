@@ -195,11 +195,11 @@ public class Controller {
     public void setMedia(String mediaEncoding) {
         if (mediaEncoding.equalsIgnoreCase("video")) {
             videoDecoder = new VideoProcessingThread(dataStore, fileMediaPath);
-            System.out.println("video startovan");
+            System.out.println("video thread startovan");
         }
         if (mediaEncoding.equalsIgnoreCase("cam")) {
-            videoDecoder = new CameraProcessingThread(dataStore, "linux");
-            System.out.println("kamera startovana");
+            videoDecoder = new CameraProcessingThread(dataStore);
+            System.out.println("kamera thread startovan");
         }
 
     }

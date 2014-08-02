@@ -32,27 +32,22 @@ public class CameraProcessingThread implements IDecoder {
     String deviceName = "";
     IContainer container;
 
-    public CameraProcessingThread(DataShare dataStore, String osx) {
+    public CameraProcessingThread(DataShare dataStore) {
         this.dataStore = dataStore;
-        if (osx.equalsIgnoreCase("linux")) {
+        if (isUnix()) {
             driverName = "video4linux2";
             deviceName = "/dev/video0";
         }
-        if (osx.equalsIgnoreCase("win")) {
+        if (isWindows()) {
             driverName = "vfwcap";
             deviceName = "0";
         }
         if (driverName.isEmpty()) {
-            throw new RuntimeException("Definisite osx koji se koristi!");
+            throw new RuntimeException("Osx nije prepoznat!");
         }
 
     }
 
-//    public CameraProcessingThread(DataShare testDataShare, int a) {
-////        this.dataStore = dataStore;
-//        dataStore = null;
-//        this.testDataShare = new DataShareProcessing(testDataShare);
-//    }
     @Override
     public void run() {
         runIt();
@@ -60,13 +55,6 @@ public class CameraProcessingThread implements IDecoder {
 
     private void runIt() {
 
-        //        args[0] = "vfwcap";
-//        args[1] = "0";
-//        if (args.length != 2) {
-//            throw new IllegalArgumentException("must pass in driver and device name");
-//        }
-//        String driverName = args[0];
-//        String deviceName = args[1];
         // Let's make sure that we can actually convert video pixel formats.
         if (!IVideoResampler.isSupported(IVideoResampler.Feature.FEATURE_COLORSPACECONVERSION)) {
             throw new RuntimeException("you must install the GPL version of Xuggler (with IVideoResampler support) for this demo to work");
@@ -235,5 +223,15 @@ public class CameraProcessingThread implements IDecoder {
             ex.printStackTrace();
         }
 
+    }
+
+    private boolean isWindows() {
+        String os = System.getProperty("os.name").toLowerCase();
+        return (os.indexOf("win") >= 0);
+    }
+
+    private boolean isUnix() {
+        String os = System.getProperty("os.name").toLowerCase();
+        return (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0 || os.indexOf("aix") > 0);
     }
 }

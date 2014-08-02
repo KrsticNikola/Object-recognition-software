@@ -72,7 +72,6 @@ public class JFrameStart extends javax.swing.JFrame {
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
-        jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMItemPlayShapeVideo = new javax.swing.JMenuItem();
         jMItemPlayNormalVideo = new javax.swing.JMenuItem();
@@ -239,9 +238,6 @@ public class JFrameStart extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("View");
-        jMenuBar1.add(jMenu3);
-
         jMenu4.setText("Play");
 
         jMItemPlayShapeVideo.setText("Play shapes only");
@@ -274,7 +270,7 @@ public class JFrameStart extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
-        jMenu7.setText("Developer tool");
+        jMenu7.setText("Development");
 
         jCheckBoxMenuItem1.setText("Enable shape saving");
         jCheckBoxMenuItem1.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -521,7 +517,6 @@ public class JFrameStart extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMItemPlayShapeVideo;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
