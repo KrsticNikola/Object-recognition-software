@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package connectedComponentLabeling;
+package connectedComponentLabeling.core;
 
 import connectedComponentLabeling.splitImage.SplitImage;
 import connectedComponentLabeling.processingImageChunk.ProcessingImageChunk;

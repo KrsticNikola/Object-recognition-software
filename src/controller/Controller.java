@@ -5,7 +5,7 @@
  */
 package controller;
 
-import connectedComponentLabeling.SegmentImage;
+import connectedComponentLabeling.core.SegmentImage;
 import compareImages.core.ImageCompare;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
