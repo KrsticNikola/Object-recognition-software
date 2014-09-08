@@ -6,6 +6,7 @@
 package gui;
 
 import controller.Controller;
+import gui.jDialog.JDialogAbout;
 import gui.jDialog.JDialogEditNeuralNetworkSensitivity;
 import gui.jDialog.JDialogEditSensitivity;
 import gui.jDialog.JDialogRecognitionAreaWidthAndHeight;
@@ -66,15 +67,14 @@ public class JFrameStart extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMItemPlayShapeVideo = new javax.swing.JMenuItem();
         jMItemPlayNormalVideo = new javax.swing.JMenuItem();
+        jMItemPlayShapeVideo = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
@@ -82,11 +82,10 @@ public class JFrameStart extends javax.swing.JFrame {
         jCheckBoxMenuItem4 = new javax.swing.JCheckBoxMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Aplikacija");
+        setTitle("Object recognition v1.0");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -169,6 +168,7 @@ public class JFrameStart extends javax.swing.JFrame {
         jMenu1.setText("File");
 
         jMenuItem1.setText("Load video file");
+        jMenuItem1.setToolTipText("Load driver for decoding file content");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -177,6 +177,7 @@ public class JFrameStart extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Load camera driver");
+        jMenuItem2.setToolTipText("Load driver for decoding camera content");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -185,6 +186,7 @@ public class JFrameStart extends javax.swing.JFrame {
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Load neural network");
+        jMenuItem3.setToolTipText("Load neural network that will be used");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -192,17 +194,9 @@ public class JFrameStart extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem3);
 
-        jMenuItem9.setText("Object saving location");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem9);
-
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Settings");
 
         jMenuItem4.setText("Shape sensitivity");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -213,6 +207,7 @@ public class JFrameStart extends javax.swing.JFrame {
         jMenu2.add(jMenuItem4);
 
         jCheckBoxMenuItem2.setText("High shape contours");
+        jCheckBoxMenuItem2.setToolTipText("Enabling high shape quality,  will lower performances");
         jCheckBoxMenuItem2.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jCheckBoxMenuItem2StateChanged(evt);
@@ -228,10 +223,11 @@ public class JFrameStart extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem8);
 
-        jCheckBoxMenuItem3.setText("Enable object saving");
-        jCheckBoxMenuItem3.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jCheckBoxMenuItem3StateChanged(evt);
+        jCheckBoxMenuItem3.setText("Object saving");
+        jCheckBoxMenuItem3.setToolTipText("Save objects that are found");
+        jCheckBoxMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem3ActionPerformed(evt);
             }
         });
         jMenu2.add(jCheckBoxMenuItem3);
@@ -240,15 +236,8 @@ public class JFrameStart extends javax.swing.JFrame {
 
         jMenu4.setText("Play");
 
-        jMItemPlayShapeVideo.setText("Play shapes only");
-        jMItemPlayShapeVideo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMItemPlayShapeVideoActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMItemPlayShapeVideo);
-
         jMItemPlayNormalVideo.setText("Play normal video");
+        jMItemPlayNormalVideo.setToolTipText("Start playing normal video");
         jMItemPlayNormalVideo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMItemPlayNormalVideoActionPerformed(evt);
@@ -256,11 +245,21 @@ public class JFrameStart extends javax.swing.JFrame {
         });
         jMenu4.add(jMItemPlayNormalVideo);
 
+        jMItemPlayShapeVideo.setText("Play shapes only");
+        jMItemPlayShapeVideo.setToolTipText("Start playing video with shapes only");
+        jMItemPlayShapeVideo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMItemPlayShapeVideoActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMItemPlayShapeVideo);
+
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Stop");
 
         jMenuItem5.setText("Stop video");
+        jMenuItem5.setToolTipText("Stop playing video");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
@@ -273,6 +272,7 @@ public class JFrameStart extends javax.swing.JFrame {
         jMenu7.setText("Development");
 
         jCheckBoxMenuItem1.setText("Enable shape saving");
+        jCheckBoxMenuItem1.setToolTipText("Enable saving of bi colour pictures");
         jCheckBoxMenuItem1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jCheckBoxMenuItem1StateChanged(evt);
@@ -281,6 +281,7 @@ public class JFrameStart extends javax.swing.JFrame {
         jMenu7.add(jCheckBoxMenuItem1);
 
         jCheckBoxMenuItem4.setText("Disable neural network recognition");
+        jCheckBoxMenuItem4.setToolTipText("Enabling will disable neural network functionality");
         jCheckBoxMenuItem4.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jCheckBoxMenuItem4StateChanged(evt);
@@ -300,10 +301,12 @@ public class JFrameStart extends javax.swing.JFrame {
 
         jMenu6.setText("Help");
 
-        jMenuItem6.setText("Tutorial");
-        jMenu6.add(jMenuItem6);
-
         jMenuItem7.setText("About");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem7);
 
         jMenuBar1.add(jMenu6);
@@ -356,7 +359,7 @@ public class JFrameStart extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
 
         Controller.getInstance().setMedia("cam");
-        jLblLoadedVideoFile.setText("Drajver kamere ucitan");
+        jLblLoadedVideoFile.setText("Camera driver loaded");
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMItemPlayNormalVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMItemPlayNormalVideoActionPerformed
@@ -416,27 +419,6 @@ public class JFrameStart extends javax.swing.JFrame {
         jdialog.setVisible(true);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
-    private void jCheckBoxMenuItem3StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem3StateChanged
-        Controller.getInstance().changeSaveObjectState();
-    }//GEN-LAST:event_jCheckBoxMenuItem3StateChanged
-
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-
-        //Create a file chooser
-        JFileChooser fc = new JFileChooser();
-        //In response to a button click:
-        fc.setCurrentDirectory(new java.io.File("."));
-        fc.setAcceptAllFileFilterUsed(false);
-
-        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int returnVal = fc.showOpenDialog(this);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            File file = fc.getSelectedFile();
-
-            Controller.getInstance().setOutputObjectFolder(file);
-        }
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
-
     private void jCheckBoxMenuItem1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1StateChanged
         Controller.getInstance().changeSavingPictureToShape();
     }//GEN-LAST:event_jCheckBoxMenuItem1StateChanged
@@ -449,6 +431,36 @@ public class JFrameStart extends javax.swing.JFrame {
     private void jCheckBoxMenuItem4StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem4StateChanged
         Controller.getInstance().changeNeuralNetworkRecognizingState();
     }//GEN-LAST:event_jCheckBoxMenuItem4StateChanged
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        JDialogAbout jdialog = new JDialogAbout(this, true);
+        jdialog.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jCheckBoxMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem3ActionPerformed
+        //Create a file chooser
+        JFileChooser fc = new JFileChooser();
+        //In response to a button click:
+        fc.setCurrentDirectory(new java.io.File("."));
+        fc.setAcceptAllFileFilterUsed(false);
+
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int returnVal = fc.showOpenDialog(this);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file = fc.getSelectedFile();
+
+            Controller.getInstance().setOutputObjectFolder(file);
+            if (!Controller.getInstance().isSaveObjects()) {
+                Controller.getInstance().changeSaveObjectState();
+            }
+            jCheckBoxMenuItem3.setSelected(true);
+        } else {
+            if (Controller.getInstance().isSaveObjects()) {
+                Controller.getInstance().changeSaveObjectState();
+            }
+            jCheckBoxMenuItem3.setSelected(false);
+        }
+    }//GEN-LAST:event_jCheckBoxMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -528,17 +540,15 @@ public class JFrameStart extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelForPlayingMedia;
     // End of variables declaration//GEN-END:variables
 
     private void setLabelValues() {
-        jLblLoadedVideoFile.setText("<html><font color='red'>Ucitati drajver!</font></html>");
-        jLblLoadedNeuralNetwork.setText("<html><font color='red'>Ucitati neurosnku mrezu!</font></html>");
+        jLblLoadedVideoFile.setText("<html><font color='red'>Load driver!</font></html>");
+        jLblLoadedNeuralNetwork.setText("<html><font color='red'>Load neural network!</font></html>");
 
     }
 }
