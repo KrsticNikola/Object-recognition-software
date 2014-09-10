@@ -63,8 +63,8 @@ public class Controller {
     private boolean saveShapes = false;
     private boolean highLvlShape = false;
     private boolean useNeuralNetwork = true;
-    private int recognitionAreaWidth = 110;
-    private int recognitionAreaHeigh = 110;
+    private int recognitionAreaWidth = 90;
+    private int recognitionAreaHeigh = 90;
 
     private Controller() {
 

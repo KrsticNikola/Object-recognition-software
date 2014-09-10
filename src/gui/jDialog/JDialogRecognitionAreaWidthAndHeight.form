@@ -111,7 +111,7 @@
       <Properties>
         <Property name="maximum" type="int" value="600"/>
         <Property name="minimum" type="int" value="20"/>
-        <Property name="value" type="int" value="110"/>
+        <Property name="value" type="int" value="90"/>
       </Properties>
       <Events>
         <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderValueHeightStateChanged"/>
@@ -119,12 +119,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLblSensValueHeight">
       <Properties>
-        <Property name="text" type="java.lang.String" value="110"/>
+        <Property name="text" type="java.lang.String" value="90"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLblSensValueWidth">
       <Properties>
-        <Property name="text" type="java.lang.String" value="110"/>
+        <Property name="text" type="java.lang.String" value="90"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -139,7 +139,7 @@
       <Properties>
         <Property name="maximum" type="int" value="600"/>
         <Property name="minimum" type="int" value="20"/>
-        <Property name="value" type="int" value="110"/>
+        <Property name="value" type="int" value="90"/>
       </Properties>
       <Events>
         <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderValueWidthStateChanged"/>

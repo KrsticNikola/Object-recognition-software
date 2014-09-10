@@ -59,23 +59,23 @@ public class JDialogRecognitionAreaWidthAndHeight extends javax.swing.JDialog {
 
         jSliderValueHeight.setMaximum(600);
         jSliderValueHeight.setMinimum(20);
-        jSliderValueHeight.setValue(110);
+        jSliderValueHeight.setValue(90);
         jSliderValueHeight.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSliderValueHeightStateChanged(evt);
             }
         });
 
-        jLblSensValueHeight.setText("110");
+        jLblSensValueHeight.setText("90");
 
-        jLblSensValueWidth.setText("110");
+        jLblSensValueWidth.setText("90");
 
         jLabel2.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         jLabel2.setText("Width");
 
         jSliderValueWidth.setMaximum(600);
         jSliderValueWidth.setMinimum(20);
-        jSliderValueWidth.setValue(110);
+        jSliderValueWidth.setValue(90);
         jSliderValueWidth.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jSliderValueWidthStateChanged(evt);
