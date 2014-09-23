@@ -28,6 +28,7 @@ public class CameraProcessingThread implements IDecoder {
 
     private final DataShare dataStore;
 //    private DataShareProcessing testDataShare;
+    private volatile boolean stop = false; //stop flag
     String driverName = "";
     String deviceName = "";
     IContainer container;
@@ -137,7 +138,9 @@ public class CameraProcessingThread implements IDecoder {
          */
 //        ArrayBlockingQueue arrayList = dataStore.getListImage();
         IPacket packet = IPacket.make();
-        while ((container != null) && (container.readNextPacket(packet) >= 0)) {
+        while (!stop) {
+            container.readNextPacket(packet);
+//        while ((container != null) && (container.readNextPacket(packet) >= 0)) {
             /*
              * Now we have a packet, let's see if it belongs to our video stream
              */
@@ -203,14 +206,16 @@ public class CameraProcessingThread implements IDecoder {
             container.close();
             container = null;
         }
+        System.out.println("Zavrseno procesiranje video kamere");
 
     }
 
     //stop metoda
     @Override
     public void requestStop() {
-        container.close();
-        container = null;
+//        container.close();
+//        container = null;
+        stop = true;
 
     }
 

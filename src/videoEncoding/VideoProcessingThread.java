@@ -61,17 +61,24 @@ public class VideoProcessingThread implements IDecoder {
 
         // read out the contents of the media file and
         // dispatch events to the attached listener
-        while (mediaReader != null && (mediaReader.readPacket() == null)) ;
+        while (!stop) {
+            mediaReader.readPacket();
+        }
+        mediaReader.close();
+        mediaReader = null;
+        
+//        while (mediaReader != null && (mediaReader.readPacket() == null)) ;
 //        while ((mediaReader.readPacket() == null) && (!stop)) ;
-        System.out.println("Zavrseno dekodiranje");
+        System.out.println("Zavrseno procesiranje video fajla");
 
     }
 
     //stop metoda
     @Override
     public void requestStop() {
-        mediaReader.close();
-        mediaReader = null;
+//        mediaReader.close();
+//        mediaReader = null;
+        stop = true;
 
     }
 

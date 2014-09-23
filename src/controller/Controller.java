@@ -146,7 +146,7 @@ public class Controller {
                             }
                             imageUtil.saveJPG(bImage, outputObjectFolder + "/" + brojac + ".jpg");
                         }
-                        System.out.println("Pronasao");
+//                        System.out.println("Pronasao");
                         graphicsShapeRect.drawRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
                         graphicsShapeRect.dispose();
                         graphicsNormalRect.drawRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
@@ -160,7 +160,7 @@ public class Controller {
                         }
                         imageUtil.saveJPG(bImage, outputObjectFolder + "/" + brojac + ".jpg");
                     }
-                    System.out.println("Pronasao");
+//                    System.out.println("Pronasao");
                     graphicsShapeRect.drawRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
                     graphicsShapeRect.dispose();
                     graphicsNormalRect.drawRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
