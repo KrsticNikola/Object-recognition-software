@@ -66,6 +66,7 @@ public class Controller {
     private int recognitionAreaWidth = 90;
     private int recognitionAreaHeigh = 90;
 
+    Thread vs = null;
     private Controller() {
 
 //        fpsLabel = new JLabel("Startujte video");
@@ -220,7 +221,7 @@ public class Controller {
     }
 
     public void playMedia() {
-        Thread vs = new Thread(videoDecoder);
+        vs = new Thread(videoDecoder);
         vs.start();
     }
 
